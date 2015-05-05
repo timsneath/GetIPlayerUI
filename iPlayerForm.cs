@@ -20,16 +20,21 @@ namespace GetIPlayerUI
             InitializeComponent();
         }
 
-        private void RefreshListings(string filter)
+        private async void RefreshListings(string filter)
         {
-            // synchronous update of program listings
+            // asynchronous update of program listings
             Application.UseWaitCursor = true;
             WaitState.Visible = true;
-            Application.DoEvents();
-            ps = iPlayer.ProgramsAvailable(filter);
+
+            ps = await Task<ProgramSet>.Run(() =>
+            {
+                return iPlayer.ProgramsAvailable(filter);
+            });
+
             ProgramsGridView.DataSource = ps;
             ProgramsGridView.DataMember = "Programs";
             FilteredItemCount.Text = ps.Programs.Rows.Count.ToString();
+
             WaitState.Visible = false;
             Application.UseWaitCursor = false;
         }

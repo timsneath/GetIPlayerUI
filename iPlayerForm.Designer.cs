@@ -32,48 +32,48 @@
             System.Windows.Forms.Label LoadingLabel;
             System.Windows.Forms.Label label1;
             System.Windows.Forms.Label label2;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("All episodes");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("New in last 24 hours");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Childrenʼs TV");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Adult-orientated");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("BBC One");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("BBC Two");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("BBC Three");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("BBC Four");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("BBC Sport");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("TV", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3,
-            treeNode4,
-            treeNode5,
-            treeNode6,
-            treeNode7,
-            treeNode8,
-            treeNode9});
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("All Episodes");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("New in last 24 hours");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("BBC Radio 1");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("BBC Radio 2");
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("BBC Radio 3");
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("BBC Radio 4");
-            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("BBC Radio 4 Extra");
-            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("BBC Radio 5 Live");
-            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("BBC 6 Music");
-            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("BBC World Service");
-            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Radio", new System.Windows.Forms.TreeNode[] {
-            treeNode12,
-            treeNode13,
-            treeNode14,
-            treeNode15,
-            treeNode16,
-            treeNode17,
-            treeNode18,
-            treeNode19,
-            treeNode20,
-            treeNode21});
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("All episodes");
+            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("New in last 24 hours");
+            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Childrenʼs TV");
+            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("Adult-orientated");
+            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("BBC One");
+            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("BBC Two");
+            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("BBC Three");
+            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("BBC Four");
+            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("BBC Sport");
+            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("TV", new System.Windows.Forms.TreeNode[] {
+            treeNode23,
+            treeNode24,
+            treeNode25,
+            treeNode26,
+            treeNode27,
+            treeNode28,
+            treeNode29,
+            treeNode30,
+            treeNode31});
+            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("");
+            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("All Episodes");
+            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("New in last 24 hours");
+            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("BBC Radio 1");
+            System.Windows.Forms.TreeNode treeNode37 = new System.Windows.Forms.TreeNode("BBC Radio 2");
+            System.Windows.Forms.TreeNode treeNode38 = new System.Windows.Forms.TreeNode("BBC Radio 3");
+            System.Windows.Forms.TreeNode treeNode39 = new System.Windows.Forms.TreeNode("BBC Radio 4");
+            System.Windows.Forms.TreeNode treeNode40 = new System.Windows.Forms.TreeNode("BBC Radio 4 Extra");
+            System.Windows.Forms.TreeNode treeNode41 = new System.Windows.Forms.TreeNode("BBC Radio 5 Live");
+            System.Windows.Forms.TreeNode treeNode42 = new System.Windows.Forms.TreeNode("BBC 6 Music");
+            System.Windows.Forms.TreeNode treeNode43 = new System.Windows.Forms.TreeNode("BBC World Service");
+            System.Windows.Forms.TreeNode treeNode44 = new System.Windows.Forms.TreeNode("Radio", new System.Windows.Forms.TreeNode[] {
+            treeNode34,
+            treeNode35,
+            treeNode36,
+            treeNode37,
+            treeNode38,
+            treeNode39,
+            treeNode40,
+            treeNode41,
+            treeNode42,
+            treeNode43});
             this.ProgramsGridView = new System.Windows.Forms.DataGridView();
             this.Selected = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -155,14 +155,14 @@
             this.episodeNumDataGridViewTextBoxColumn,
             this.channelDataGridViewTextBoxColumn});
             this.ProgramsGridView.DataSource = this.programsBindingSource;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ProgramsGridView.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ProgramsGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.ProgramsGridView.Location = new System.Drawing.Point(201, 70);
             this.ProgramsGridView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ProgramsGridView.Name = "ProgramsGridView";
@@ -274,56 +274,56 @@
             this.FilterList.Location = new System.Drawing.Point(14, 70);
             this.FilterList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.FilterList.Name = "FilterList";
-            treeNode1.Name = "TVAllEpisodes";
-            treeNode1.Text = "All episodes";
-            treeNode2.Name = "TVNewInLast24Hours";
-            treeNode2.Text = "New in last 24 hours";
-            treeNode3.Name = "ChildrensTV";
-            treeNode3.Text = "Childrenʼs TV";
-            treeNode4.Name = "AdultOrientated";
-            treeNode4.Text = "Adult-orientated";
-            treeNode5.Name = "BBC1";
-            treeNode5.Text = "BBC One";
-            treeNode6.Name = "BBC2";
-            treeNode6.Text = "BBC Two";
-            treeNode7.Name = "BBC3";
-            treeNode7.Text = "BBC Three";
-            treeNode8.Name = "BBC4";
-            treeNode8.Text = "BBC Four";
-            treeNode9.Name = "BBCSport";
-            treeNode9.Text = "BBC Sport";
-            treeNode10.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            treeNode10.Name = "TV";
-            treeNode10.Text = "TV";
-            treeNode11.Name = "Separator1";
-            treeNode11.Text = "";
-            treeNode12.Name = "RadioAllEpisodes";
-            treeNode12.Text = "All Episodes";
-            treeNode13.Name = "RadioNewInLast24Hours";
-            treeNode13.Text = "New in last 24 hours";
-            treeNode14.Name = "Radio1";
-            treeNode14.Text = "BBC Radio 1";
-            treeNode15.Name = "Radio2";
-            treeNode15.Text = "BBC Radio 2";
-            treeNode16.Name = "Radio3";
-            treeNode16.Text = "BBC Radio 3";
-            treeNode17.Name = "Radio4";
-            treeNode17.Text = "BBC Radio 4";
-            treeNode18.Name = "Radio4X";
-            treeNode18.Text = "BBC Radio 4 Extra";
-            treeNode19.Name = "Radio 5";
-            treeNode19.Text = "BBC Radio 5 Live";
-            treeNode20.Name = "Radio6";
-            treeNode20.Text = "BBC 6 Music";
-            treeNode21.Name = "RadioWS";
-            treeNode21.Text = "BBC World Service";
-            treeNode22.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            treeNode22.Name = "Radio";
-            treeNode22.Text = "Radio";
+            treeNode23.Name = "TVAllEpisodes";
+            treeNode23.Text = "All episodes";
+            treeNode24.Name = "TVNewInLast24Hours";
+            treeNode24.Text = "New in last 24 hours";
+            treeNode25.Name = "ChildrensTV";
+            treeNode25.Text = "Childrenʼs TV";
+            treeNode26.Name = "AdultOrientated";
+            treeNode26.Text = "Adult-orientated";
+            treeNode27.Name = "BBC1";
+            treeNode27.Text = "BBC One";
+            treeNode28.Name = "BBC2";
+            treeNode28.Text = "BBC Two";
+            treeNode29.Name = "BBC3";
+            treeNode29.Text = "BBC Three";
+            treeNode30.Name = "BBC4";
+            treeNode30.Text = "BBC Four";
+            treeNode31.Name = "BBCSport";
+            treeNode31.Text = "BBC Sport";
+            treeNode32.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            treeNode32.Name = "TV";
+            treeNode32.Text = "TV";
+            treeNode33.Name = "Separator1";
+            treeNode33.Text = "";
+            treeNode34.Name = "RadioAllEpisodes";
+            treeNode34.Text = "All Episodes";
+            treeNode35.Name = "RadioNewInLast24Hours";
+            treeNode35.Text = "New in last 24 hours";
+            treeNode36.Name = "Radio1";
+            treeNode36.Text = "BBC Radio 1";
+            treeNode37.Name = "Radio2";
+            treeNode37.Text = "BBC Radio 2";
+            treeNode38.Name = "Radio3";
+            treeNode38.Text = "BBC Radio 3";
+            treeNode39.Name = "Radio4";
+            treeNode39.Text = "BBC Radio 4";
+            treeNode40.Name = "Radio4X";
+            treeNode40.Text = "BBC Radio 4 Extra";
+            treeNode41.Name = "Radio 5";
+            treeNode41.Text = "BBC Radio 5 Live";
+            treeNode42.Name = "Radio6";
+            treeNode42.Text = "BBC 6 Music";
+            treeNode43.Name = "RadioWS";
+            treeNode43.Text = "BBC World Service";
+            treeNode44.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            treeNode44.Name = "Radio";
+            treeNode44.Text = "Radio";
             this.FilterList.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode10,
-            treeNode11,
-            treeNode22});
+            treeNode32,
+            treeNode33,
+            treeNode44});
             this.FilterList.ShowLines = false;
             this.FilterList.ShowPlusMinus = false;
             this.FilterList.ShowRootLines = false;
@@ -382,8 +382,7 @@
             // 
             // iPlayerForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1052, 674);
             this.Controls.Add(this.FilteredItemCount);
