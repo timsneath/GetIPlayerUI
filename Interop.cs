@@ -52,32 +52,17 @@ namespace GetIPlayerUI
             while (line != String.Empty)
             {
                 var fields = line.Split(',');
-                if (fields.Length == 9)
+                if (fields.Length >= 9)
                 {
                     ps.Programs.AddProgramsRow(fields[0], fields[1], fields[2], fields[3], fields[4], 
-                        fields[5], fields[6], fields[7], fields[8], false);
+                        fields[5], fields[6], fields[7], line.Substring(line.IndexOf(fields[8])), false);
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine("Wrong number of fields: " + line);
                 }
                 line = sr.ReadLine();
             }
-            //// ugly brute force. Where's Python when you need it? 
-            //var tfp = new Microsoft.VisualBasic.FileIO.TextFieldParser(sr);
-
-            //tfp.Delimiters = new string[] { "," };
-            //while (!tfp.EndOfData)
-            //{
-            //    try
-            //    {
-            //        string[] s = tfp.ReadFields();
-            //        if (s.Length == 9)
-            //        {
-                        
-            //        }
-            //    }
-            //    catch (Microsoft.VisualBasic.FileIO.MalformedLineException)
-            //    {
-            //        // whatever
-            //    }
-            //}
 
             return ps;
         }

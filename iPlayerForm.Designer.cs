@@ -90,7 +90,6 @@
             this.WaitState = new System.Windows.Forms.Panel();
             this.backgroundProcess = new System.Diagnostics.Process();
             this.FilteredItemCount = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             LoadingLabel = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
@@ -382,21 +381,11 @@
             this.FilteredItemCount.TabIndex = 10;
             this.FilteredItemCount.Text = "0";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // iPlayerForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1052, 674);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.FilteredItemCount);
             this.Controls.Add(label2);
             this.Controls.Add(this.WaitState);
@@ -437,7 +426,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn seriesNumDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn episodeNumDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn channelDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button button1;
     }
 }
 
