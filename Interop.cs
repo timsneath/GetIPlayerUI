@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace GetIPlayerUI
 {
@@ -74,6 +72,39 @@ namespace GetIPlayerUI
                 progs += progID.ToString() + " ";
             }
             this.Call("get_iplayer.cmd --get " + progs + " --modes=flashvhigh", true);
+        }
+
+        public Dictionary<string, string> GetProgramInfo(int progId)
+        {
+            Dictionary<string, string> programInfo = new Dictionary<string, string>();
+
+            string progInfoRaw = this.Call("get_iplayer.cmd --info " + progId, false);
+
+            StringReader reader = new StringReader(progInfoRaw);
+
+            // ignore initial spew from the program. First useful metadata is "available:"
+            string header;
+            do
+            {
+                header = reader.ReadLine();
+            } while (!header.StartsWith("available"));
+
+            string metadataItem, key, value; 
+
+            metadataItem = header; // reuse 'available' field
+            while (metadataItem != "")
+            {
+
+                key = metadataItem.Substring(0, metadataItem.IndexOf(':'));
+                value = metadataItem.Substring(metadataItem.IndexOf(':')+1).TrimStart(' ');
+                if (!programInfo.ContainsKey(key))
+                {
+                    programInfo.Add(key, value);
+                }
+                metadataItem = reader.ReadLine();
+            }
+
+            return programInfo;
         }
     }
 }
