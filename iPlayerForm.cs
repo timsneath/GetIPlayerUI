@@ -88,24 +88,11 @@ namespace GetIPlayerUI
             RefreshListings(iPlayer.ProgramFilter["TVAllEpisodes"]);
         }
 
-        private void ProgramsGridView_MouseHover(object sender, EventArgs e)
+        private void ProgramsGridView_CellToolTipTextNeeded(object sender, DataGridViewCellToolTipTextNeededEventArgs e)
         {
-            var mousePosition = this.ProgramsGridView.PointToClient(Control.MousePosition);
-            var hitTest = this.ProgramsGridView.HitTest(mousePosition.X, mousePosition.Y);
-
-            if (hitTest.Type == DataGridViewHitTestType.Cell)
+            if (e.RowIndex > 0)
             {
-                var cell = this.ProgramsGridView[hitTest.ColumnIndex, hitTest.RowIndex];
-                if (cell.ToolTipText == String.Empty)
-                {
-                    int progId;
-                    var success = Int32.TryParse(ProgramsGridView.Rows[hitTest.RowIndex].Cells[1].Value.ToString(), out progId);
-                    if (success)
-                    {
-                        var programInfo = iPlayer.GetProgramInfo(progId);
-                        cell.ToolTipText = programInfo["desclong"];
-                    }
-                }
+                e.ToolTipText = ps.Programs[e.RowIndex].Description;
             }
         }
     }

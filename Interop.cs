@@ -38,28 +38,46 @@ namespace GetIPlayerUI
         {
             var ps = new ProgramSet();
 
-            string progs = this.Call("get_iplayer.cmd --listformat \"<index>,<name>,<episode>,<seriesnum>,<episodenum>,<version>,<channel>,<type>,<duration>\" " + filter, false);
+            string progs = this.Call("get_iplayer.cmd --listformat \"<index>,<name>,<episode>,<seriesnum>,<episodenum>,<channel>,<type>,<duration>,<desc>\" " + filter, false);
             System.IO.StringReader sr = new System.IO.StringReader(progs);
 
-            // ugly brute force. Where's Python when you need it? 
-            var tfp = new Microsoft.VisualBasic.FileIO.TextFieldParser(sr);
-
-            tfp.Delimiters = new string[] { "," };
-            while (!tfp.EndOfData)
+            // ignore header
+            string line;
+            do
             {
-                try
+                line = sr.ReadLine();
+            } while (!line.StartsWith("Matches:"));
+
+            line = sr.ReadLine();
+            while (line != String.Empty)
+            {
+                var fields = line.Split(',');
+                if (fields.Length == 9)
                 {
-                    string[] s = tfp.ReadFields();
-                    if (s.Length == 9)
-                    {
-                        ps.Programs.AddProgramsRow(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7], s[8], false);
-                    }
+                    ps.Programs.AddProgramsRow(fields[0], fields[1], fields[2], fields[3], fields[4], 
+                        fields[5], fields[6], fields[7], fields[8], false);
                 }
-                catch (Microsoft.VisualBasic.FileIO.MalformedLineException)
-                {
-                    // whatever
-                }
+                line = sr.ReadLine();
             }
+            //// ugly brute force. Where's Python when you need it? 
+            //var tfp = new Microsoft.VisualBasic.FileIO.TextFieldParser(sr);
+
+            //tfp.Delimiters = new string[] { "," };
+            //while (!tfp.EndOfData)
+            //{
+            //    try
+            //    {
+            //        string[] s = tfp.ReadFields();
+            //        if (s.Length == 9)
+            //        {
+                        
+            //        }
+            //    }
+            //    catch (Microsoft.VisualBasic.FileIO.MalformedLineException)
+            //    {
+            //        // whatever
+            //    }
+            //}
 
             return ps;
         }

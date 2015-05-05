@@ -172,7 +172,7 @@
             this.ProgramsGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ProgramsGridView.Size = new System.Drawing.Size(806, 529);
             this.ProgramsGridView.TabIndex = 0;
-            this.ProgramsGridView.MouseHover += new System.EventHandler(this.ProgramsGridView_MouseHover);
+            this.ProgramsGridView.CellToolTipTextNeeded += new System.Windows.Forms.DataGridViewCellToolTipTextNeededEventHandler(this.ProgramsGridView_CellToolTipTextNeeded);
             // 
             // Selected
             // 

@@ -289,13 +289,13 @@ namespace GetIPlayerUI {
             
             private global::System.Data.DataColumn columnEpisodeNum;
             
-            private global::System.Data.DataColumn columnVersion;
-            
             private global::System.Data.DataColumn columnChannel;
             
             private global::System.Data.DataColumn columnType;
             
             private global::System.Data.DataColumn columnDuration;
+            
+            private global::System.Data.DataColumn columnDescription;
             
             private global::System.Data.DataColumn columnSelected;
             
@@ -374,14 +374,6 @@ namespace GetIPlayerUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn VersionColumn {
-                get {
-                    return this.columnVersion;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn ChannelColumn {
                 get {
                     return this.columnChannel;
@@ -401,6 +393,14 @@ namespace GetIPlayerUI {
             public global::System.Data.DataColumn DurationColumn {
                 get {
                     return this.columnDuration;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DescriptionColumn {
+                get {
+                    return this.columnDescription;
                 }
             }
             
@@ -449,7 +449,7 @@ namespace GetIPlayerUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ProgramsRow AddProgramsRow(string ID, string Name, string Episode, string SeriesNum, string EpisodeNum, string Version, string Channel, string Type, string Duration, bool Selected) {
+            public ProgramsRow AddProgramsRow(string ID, string Name, string Episode, string SeriesNum, string EpisodeNum, string Channel, string Type, string Duration, string Description, bool Selected) {
                 ProgramsRow rowProgramsRow = ((ProgramsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
@@ -457,10 +457,10 @@ namespace GetIPlayerUI {
                         Episode,
                         SeriesNum,
                         EpisodeNum,
-                        Version,
                         Channel,
                         Type,
                         Duration,
+                        Description,
                         Selected};
                 rowProgramsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowProgramsRow);
@@ -496,10 +496,10 @@ namespace GetIPlayerUI {
                 this.columnEpisode = base.Columns["Episode"];
                 this.columnSeriesNum = base.Columns["SeriesNum"];
                 this.columnEpisodeNum = base.Columns["EpisodeNum"];
-                this.columnVersion = base.Columns["Version"];
                 this.columnChannel = base.Columns["Channel"];
                 this.columnType = base.Columns["Type"];
                 this.columnDuration = base.Columns["Duration"];
+                this.columnDescription = base.Columns["Description"];
                 this.columnSelected = base.Columns["Selected"];
             }
             
@@ -516,14 +516,14 @@ namespace GetIPlayerUI {
                 base.Columns.Add(this.columnSeriesNum);
                 this.columnEpisodeNum = new global::System.Data.DataColumn("EpisodeNum", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEpisodeNum);
-                this.columnVersion = new global::System.Data.DataColumn("Version", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnVersion);
                 this.columnChannel = new global::System.Data.DataColumn("Channel", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnChannel);
                 this.columnType = new global::System.Data.DataColumn("Type", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnType);
                 this.columnDuration = new global::System.Data.DataColumn("Duration", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDuration);
+                this.columnDescription = new global::System.Data.DataColumn("Description", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDescription);
                 this.columnSelected = new global::System.Data.DataColumn("Selected", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSelected);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
@@ -747,22 +747,6 @@ namespace GetIPlayerUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Version {
-                get {
-                    try {
-                        return ((string)(this[this.tablePrograms.VersionColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Version\' in table \'Programs\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablePrograms.VersionColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Channel {
                 get {
                     try {
@@ -806,6 +790,22 @@ namespace GetIPlayerUI {
                 }
                 set {
                     this[this.tablePrograms.DurationColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Description {
+                get {
+                    try {
+                        return ((string)(this[this.tablePrograms.DescriptionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Description\' in table \'Programs\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePrograms.DescriptionColumn] = value;
                 }
             }
             
@@ -875,18 +875,6 @@ namespace GetIPlayerUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsVersionNull() {
-                return this.IsNull(this.tablePrograms.VersionColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetVersionNull() {
-                this[this.tablePrograms.VersionColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsChannelNull() {
                 return this.IsNull(this.tablePrograms.ChannelColumn);
             }
@@ -919,6 +907,18 @@ namespace GetIPlayerUI {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetDurationNull() {
                 this[this.tablePrograms.DurationColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDescriptionNull() {
+                return this.IsNull(this.tablePrograms.DescriptionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDescriptionNull() {
+                this[this.tablePrograms.DescriptionColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
