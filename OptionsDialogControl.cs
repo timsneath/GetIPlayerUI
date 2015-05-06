@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace GetIPlayerUI
 {
-    public partial class OptionsDialogControl : UserControl
+    public partial class SettingsDialogControl : UserControl
     {
-        public OptionsDialogControl()
+        public SettingsDialogControl()
         {
             InitializeComponent();
         }

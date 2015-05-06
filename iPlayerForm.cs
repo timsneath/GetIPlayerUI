@@ -20,7 +20,7 @@ namespace GetIPlayerUI
             InitializeComponent();
         }
 
-        private async void RefreshListings(string filter, bool forceRefresh = false)
+        private async void RefreshListings(string filter)
         {
             // asynchronous update of program listings
             Application.UseWaitCursor = true;
@@ -28,7 +28,7 @@ namespace GetIPlayerUI
 
             ps = await Task<ProgramSet>.Run(() =>
             {
-                return iPlayer.ProgramsAvailable(filter, forceRefresh);
+                return iPlayer.ProgramsAvailable(filter);
             });
 
             programsDataGridView.DataSource = ps;
@@ -80,13 +80,13 @@ namespace GetIPlayerUI
             UpdateCacheLabel();
         }
 
-        private void UpdateFilter(string filter, bool forceRefresh = false)
+        private void UpdateFilter(string filter)
         {
             string filterArgs;
 
             if (iPlayer.ProgramFilter.TryGetValue(filter, out filterArgs))
             {
-                RefreshListings(filterArgs, forceRefresh);
+                RefreshListings(filterArgs);
             }
         }
 
@@ -128,11 +128,26 @@ namespace GetIPlayerUI
             settingsDialogControl.Visible = true;
         }
 
-        private void refreshCacheLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private async void refreshCacheLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            // TODO: I've screwed this up. Need to properly force refresh
-            UpdateFilter(FilterList.SelectedNode.Name, true);
+            // asynchronous update of program listings
+            Application.UseWaitCursor = true;
+            WaitState.Visible = true;
+
+            string node = FilterList.SelectedNode.FullPath;
+            if (node.IndexOf('\\') != -1)
+            { 
+                node = node.Substring(0, node.IndexOf('\\'));
+            }
+
+            await iPlayer.RefreshCacheAsync(node);
+
+            UpdateFilter(FilterList.SelectedNode.Name);
             UpdateCacheLabel();
+
+            WaitState.Visible = false;
+            Application.UseWaitCursor = false;
+
         }
     }
 }

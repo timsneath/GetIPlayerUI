@@ -75,7 +75,6 @@
             treeNode20,
             treeNode21});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(iPlayerForm));
-            this.backgroundProcess = new System.Diagnostics.Process();
             this.programsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.programSet = new GetIPlayerUI.ProgramSet();
             this.programsDataGridView = new System.Windows.Forms.DataGridView();
@@ -93,9 +92,9 @@
             this.FilteredItemCount = new System.Windows.Forms.Label();
             this.settingsLinkLabel = new System.Windows.Forms.LinkLabel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.cacheAgeLabel = new System.Windows.Forms.Label();
             this.refreshCacheLinkLabel = new System.Windows.Forms.LinkLabel();
-            this.settingsDialogControl = new GetIPlayerUI.OptionsDialogControl();
+            this.cacheAgeLabel = new System.Windows.Forms.Label();
+            this.settingsDialogControl = new GetIPlayerUI.SettingsDialogControl();
             label1 = new System.Windows.Forms.Label();
             LoadingLabel = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
@@ -138,17 +137,6 @@
             label2.Size = new System.Drawing.Size(178, 25);
             label2.TabIndex = 9;
             label2.Text = "Programmes found:";
-            // 
-            // backgroundProcess
-            // 
-            this.backgroundProcess.EnableRaisingEvents = true;
-            this.backgroundProcess.StartInfo.Domain = "";
-            this.backgroundProcess.StartInfo.LoadUserProfile = false;
-            this.backgroundProcess.StartInfo.Password = null;
-            this.backgroundProcess.StartInfo.StandardErrorEncoding = null;
-            this.backgroundProcess.StartInfo.StandardOutputEncoding = null;
-            this.backgroundProcess.StartInfo.UserName = "";
-            this.backgroundProcess.SynchronizingObject = this;
             // 
             // programsBindingSource
             // 
@@ -402,6 +390,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.settingsDialogControl);
             this.panel1.Controls.Add(this.refreshCacheLinkLabel);
             this.panel1.Controls.Add(this.cacheAgeLabel);
             this.panel1.Controls.Add(this.settingsLinkLabel);
@@ -417,16 +406,6 @@
             this.panel1.Size = new System.Drawing.Size(1030, 663);
             this.panel1.TabIndex = 14;
             // 
-            // cacheAgeLabel
-            // 
-            this.cacheAgeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cacheAgeLabel.Location = new System.Drawing.Point(622, 9);
-            this.cacheAgeLabel.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.cacheAgeLabel.Name = "cacheAgeLabel";
-            this.cacheAgeLabel.Size = new System.Drawing.Size(382, 25);
-            this.cacheAgeLabel.TabIndex = 16;
-            this.cacheAgeLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
             // refreshCacheLinkLabel
             // 
             this.refreshCacheLinkLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -441,13 +420,26 @@
             this.refreshCacheLinkLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.refreshCacheLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.refreshCacheLinkLabel_LinkClicked);
             // 
+            // cacheAgeLabel
+            // 
+            this.cacheAgeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cacheAgeLabel.Location = new System.Drawing.Point(622, 9);
+            this.cacheAgeLabel.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.cacheAgeLabel.Name = "cacheAgeLabel";
+            this.cacheAgeLabel.Size = new System.Drawing.Size(382, 25);
+            this.cacheAgeLabel.TabIndex = 16;
+            this.cacheAgeLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // settingsDialogControl
             // 
+            this.settingsDialogControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.settingsDialogControl.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.settingsDialogControl.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.settingsDialogControl.Location = new System.Drawing.Point(157, 115);
+            this.settingsDialogControl.Location = new System.Drawing.Point(11, 66);
             this.settingsDialogControl.Name = "settingsDialogControl";
-            this.settingsDialogControl.Size = new System.Drawing.Size(1065, 942);
+            this.settingsDialogControl.Size = new System.Drawing.Size(1026, 597);
             this.settingsDialogControl.TabIndex = 12;
             this.settingsDialogControl.Visible = false;
             // 
@@ -457,7 +449,6 @@
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1052, 674);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.settingsDialogControl);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -478,8 +469,7 @@
         #endregion
         private System.Windows.Forms.BindingSource programsBindingSource;
         private ProgramSet programSet;
-        private System.Diagnostics.Process backgroundProcess;
-        private OptionsDialogControl settingsDialogControl;
+        private SettingsDialogControl settingsDialogControl;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.LinkLabel settingsLinkLabel;
         private System.Windows.Forms.Label FilteredItemCount;

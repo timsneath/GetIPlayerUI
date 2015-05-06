@@ -1,6 +1,6 @@
 ﻿namespace GetIPlayerUI
 {
-    partial class OptionsDialogControl
+    partial class SettingsDialogControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -42,10 +42,10 @@
             this.applyButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.executablePathPanel = new System.Windows.Forms.Panel();
+            this.pathLocationButton = new System.Windows.Forms.Button();
             this.pathSettingsPanel = new System.Windows.Forms.Label();
             this.pathLocationTextBox = new System.Windows.Forms.TextBox();
             this.pathLabel = new System.Windows.Forms.Label();
-            this.pathLocationButton = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.proxyPanel.SuspendLayout();
             this.executablePathPanel.SuspendLayout();
@@ -53,6 +53,8 @@
             // 
             // proxyPanel
             // 
+            this.proxyPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.proxyPanel.BackColor = System.Drawing.Color.Transparent;
             this.proxyPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.proxyPanel.Controls.Add(this.portValidationLabel);
@@ -167,6 +169,7 @@
             // 
             // applyButton
             // 
+            this.applyButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.applyButton.Location = new System.Drawing.Point(422, 490);
             this.applyButton.Name = "applyButton";
             this.applyButton.Size = new System.Drawing.Size(119, 45);
@@ -177,6 +180,7 @@
             // 
             // cancelButton
             // 
+            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cancelButton.Location = new System.Drawing.Point(549, 490);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(119, 45);
@@ -187,6 +191,8 @@
             // 
             // executablePathPanel
             // 
+            this.executablePathPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.executablePathPanel.BackColor = System.Drawing.Color.Transparent;
             this.executablePathPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.executablePathPanel.Controls.Add(this.pathLocationButton);
@@ -197,6 +203,16 @@
             this.executablePathPanel.Name = "executablePathPanel";
             this.executablePathPanel.Size = new System.Drawing.Size(644, 138);
             this.executablePathPanel.TabIndex = 11;
+            // 
+            // pathLocationButton
+            // 
+            this.pathLocationButton.Location = new System.Drawing.Point(475, 71);
+            this.pathLocationButton.Name = "pathLocationButton";
+            this.pathLocationButton.Size = new System.Drawing.Size(47, 30);
+            this.pathLocationButton.TabIndex = 9;
+            this.pathLocationButton.Text = "&...";
+            this.pathLocationButton.UseVisualStyleBackColor = true;
+            this.pathLocationButton.Click += new System.EventHandler(this.pathLocationButton_Click);
             // 
             // pathSettingsPanel
             // 
@@ -227,17 +243,7 @@
             this.pathLabel.TabIndex = 0;
             this.pathLabel.Text = "Pa&th:";
             // 
-            // pathLocationButton
-            // 
-            this.pathLocationButton.Location = new System.Drawing.Point(475, 71);
-            this.pathLocationButton.Name = "pathLocationButton";
-            this.pathLocationButton.Size = new System.Drawing.Size(47, 30);
-            this.pathLocationButton.TabIndex = 9;
-            this.pathLocationButton.Text = "&...";
-            this.pathLocationButton.UseVisualStyleBackColor = true;
-            this.pathLocationButton.Click += new System.EventHandler(this.pathLocationButton_Click);
-            // 
-            // OptionsDialogControl
+            // SettingsDialogControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -247,7 +253,7 @@
             this.Controls.Add(this.applyButton);
             this.Controls.Add(this.proxyPanel);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Name = "OptionsDialogControl";
+            this.Name = "SettingsDialogControl";
             this.Size = new System.Drawing.Size(689, 555);
             this.proxyPanel.ResumeLayout(false);
             this.proxyPanel.PerformLayout();

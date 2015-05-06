@@ -27,7 +27,8 @@ namespace GetIPlayerUI
             {"Radio4", "--channel=\"BBC Radio 4\" --type=radio"},
             {"Radio4X", "--channel=\"BBC Radio 4 extra\" --type=radio"},
             {"Radio5", "--channel=\"BBC Radio 5 live\" --type=radio"},
-            {"Radio6", "--channel=\"BBC 6 music\" --type=radio"},
+            {"Radio5X", "--channel=\"BBC 5 live sports extra\" --type=radio"},
+            {"Radio6", "--channel=\"BBC 6 Music\" --type=radio"},
             {"RadioWS", "--channel=\"BBC World Service\" --type=radio"}
         };
     }
