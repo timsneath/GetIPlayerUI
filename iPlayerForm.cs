@@ -95,5 +95,10 @@ namespace GetIPlayerUI
                 e.ToolTipText = ps.Programs[e.RowIndex].Description;
             }
         }
+
+        private void settingsLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            optionsDialogControl1.Visible = true;
+        }
     }
 }

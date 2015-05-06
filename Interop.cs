@@ -6,16 +6,26 @@ namespace GetIPlayerUI
 {
     public partial class Interop
     {
-        public string Call(string command, bool showWindow)
+        public string Call(string command, bool useProxy = true, bool showWindow = true)
         {
             string retVal = "";
+            string proxy = "--proxy \"http://" + Properties.Settings.Default.ProxyUsername +
+                ":" + Properties.Settings.Default.ProxyPassword + 
+                "@" + Properties.Settings.Default.ProxyServerName +
+                ":" + Properties.Settings.Default.ProxyPassword;
 
             try
             {
+                if (useProxy)
+                {
+                    command += " " + proxy;
+                }
+
                 System.Diagnostics.Debug.WriteLine(command);
+
                 var procStartInfo = new System.Diagnostics.ProcessStartInfo("cmd ", "/c " + command);
 
-                procStartInfo.WorkingDirectory = @"C:\Program Files (x86)\get_iplayer";
+                procStartInfo.WorkingDirectory = Properties.Settings.Default.GetIPlayerPath;
                 procStartInfo.RedirectStandardOutput = true;
                 procStartInfo.UseShellExecute = false;
                 procStartInfo.CreateNoWindow = !showWindow;
@@ -38,7 +48,7 @@ namespace GetIPlayerUI
         {
             var ps = new ProgramSet();
 
-            string progs = this.Call("get_iplayer.cmd --listformat \"<index>,<name>,<episode>,<seriesnum>,<episodenum>,<channel>,<type>,<duration>,<desc>\" " + filter, false);
+            string progs = this.Call("get_iplayer.cmd --listformat \"<index>,<name>,<episode>,<seriesnum>,<episodenum>,<channel>,<type>,<duration>,<desc>\" " + filter, false, false);
             System.IO.StringReader sr = new System.IO.StringReader(progs);
 
             // ignore header
@@ -74,14 +84,14 @@ namespace GetIPlayerUI
             {
                 progs += progID.ToString() + " ";
             }
-            this.Call("get_iplayer.cmd --get " + progs + " --modes=flashvhigh", true);
+            this.Call("get_iplayer.cmd --get " + progs + " --modes=flashvhigh", true, true);
         }
 
         public Dictionary<string, string> GetProgramInfo(int progId)
         {
             Dictionary<string, string> programInfo = new Dictionary<string, string>();
 
-            string progInfoRaw = this.Call("get_iplayer.cmd --info " + progId, false);
+            string progInfoRaw = this.Call("get_iplayer.cmd --info " + progId, false, false);
 
             StringReader reader = new StringReader(progInfoRaw);
 

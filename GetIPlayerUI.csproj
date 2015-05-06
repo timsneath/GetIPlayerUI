@@ -79,6 +79,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Filter.cs" />
+    <Compile Include="OptionsDialogControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OptionsDialogControl.Designer.cs">
+      <DependentUpon>OptionsDialogControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProgramSet.cs">
       <DependentUpon>ProgramSet.xsd</DependentUpon>
     </Compile>
@@ -98,6 +104,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="iPlayerForm.resx">
       <DependentUpon>iPlayerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OptionsDialogControl.resx">
+      <DependentUpon>OptionsDialogControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
