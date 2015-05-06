@@ -29,8 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.Label label1;
+            System.Windows.Forms.Label LoadingLabel;
+            System.Windows.Forms.Label label2;
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("All episodes");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("New in last 24 hours");
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Childrenʼs TV");
@@ -72,20 +74,18 @@
             treeNode19,
             treeNode20,
             treeNode21});
-            System.Windows.Forms.Label LoadingLabel;
-            System.Windows.Forms.Label label2;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(iPlayerForm));
             this.backgroundProcess = new System.Diagnostics.Process();
             this.programsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.programSet = new GetIPlayerUI.ProgramSet();
-            this.optionsDialogControl1 = new GetIPlayerUI.OptionsDialogControl();
-            this.ProgramsGridView = new System.Windows.Forms.DataGridView();
-            this.channelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.episodeNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.seriesNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.episodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.programsDataGridView = new System.Windows.Forms.DataGridView();
             this.Selected = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.episodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.seriesNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.episodeNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.channelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.recordButton = new System.Windows.Forms.Button();
             this.FilterList = new System.Windows.Forms.TreeView();
             this.WaitState = new System.Windows.Forms.Panel();
@@ -93,15 +93,51 @@
             this.FilteredItemCount = new System.Windows.Forms.Label();
             this.settingsLinkLabel = new System.Windows.Forms.LinkLabel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cacheAgeLabel = new System.Windows.Forms.Label();
+            this.refreshCacheLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.settingsDialogControl = new GetIPlayerUI.OptionsDialogControl();
             label1 = new System.Windows.Forms.Label();
             LoadingLabel = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.programsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.programSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProgramsGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.programsDataGridView)).BeginInit();
             this.WaitState.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            label1.Location = new System.Drawing.Point(11, 9);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(392, 37);
+            label1.TabIndex = 3;
+            label1.Text = "iPlayer Personal Video Recorder";
+            // 
+            // LoadingLabel
+            // 
+            LoadingLabel.AutoSize = true;
+            LoadingLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            LoadingLabel.ForeColor = System.Drawing.Color.Green;
+            LoadingLabel.Location = new System.Drawing.Point(8, 18);
+            LoadingLabel.Name = "LoadingLabel";
+            LoadingLabel.Size = new System.Drawing.Size(345, 32);
+            LoadingLabel.TabIndex = 8;
+            LoadingLabel.Text = "Updating Programme Listings...";
+            // 
+            // label2
+            // 
+            label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            label2.AutoSize = true;
+            label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label2.Location = new System.Drawing.Point(197, 619);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(178, 25);
+            label2.TabIndex = 9;
+            label2.Text = "Programmes found:";
             // 
             // backgroundProcess
             // 
@@ -124,31 +160,21 @@
             this.programSet.DataSetName = "ProgramSet";
             this.programSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // optionsDialogControl1
+            // programsDataGridView
             // 
-            this.optionsDialogControl1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.optionsDialogControl1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.optionsDialogControl1.Location = new System.Drawing.Point(157, 115);
-            this.optionsDialogControl1.Name = "optionsDialogControl1";
-            this.optionsDialogControl1.Size = new System.Drawing.Size(1065, 942);
-            this.optionsDialogControl1.TabIndex = 12;
-            this.optionsDialogControl1.Visible = false;
-            // 
-            // ProgramsGridView
-            // 
-            this.ProgramsGridView.AllowUserToAddRows = false;
-            this.ProgramsGridView.AllowUserToDeleteRows = false;
-            this.ProgramsGridView.AllowUserToResizeRows = false;
-            this.ProgramsGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.programsDataGridView.AllowUserToAddRows = false;
+            this.programsDataGridView.AllowUserToDeleteRows = false;
+            this.programsDataGridView.AllowUserToResizeRows = false;
+            this.programsDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProgramsGridView.AutoGenerateColumns = false;
-            this.ProgramsGridView.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ProgramsGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.ProgramsGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.ProgramsGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.ProgramsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ProgramsGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.programsDataGridView.AutoGenerateColumns = false;
+            this.programsDataGridView.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.programsDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.programsDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.programsDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.programsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.programsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Selected,
             this.iDDataGridViewTextBoxColumn,
             this.nameDataGridViewTextBoxColumn,
@@ -156,7 +182,7 @@
             this.seriesNumDataGridViewTextBoxColumn,
             this.episodeNumDataGridViewTextBoxColumn,
             this.channelDataGridViewTextBoxColumn});
-            this.ProgramsGridView.DataSource = this.programsBindingSource;
+            this.programsDataGridView.DataSource = this.programsBindingSource;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -164,45 +190,46 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ProgramsGridView.DefaultCellStyle = dataGridViewCellStyle1;
-            this.ProgramsGridView.Location = new System.Drawing.Point(198, 67);
-            this.ProgramsGridView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ProgramsGridView.Name = "ProgramsGridView";
-            this.ProgramsGridView.ReadOnly = true;
-            this.ProgramsGridView.RowHeadersVisible = false;
-            this.ProgramsGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ProgramsGridView.Size = new System.Drawing.Size(806, 529);
-            this.ProgramsGridView.TabIndex = 0;
-            this.ProgramsGridView.CellToolTipTextNeeded += new System.Windows.Forms.DataGridViewCellToolTipTextNeededEventHandler(this.ProgramsGridView_CellToolTipTextNeeded);
+            this.programsDataGridView.DefaultCellStyle = dataGridViewCellStyle1;
+            this.programsDataGridView.Location = new System.Drawing.Point(198, 67);
+            this.programsDataGridView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.programsDataGridView.Name = "programsDataGridView";
+            this.programsDataGridView.ReadOnly = true;
+            this.programsDataGridView.RowHeadersVisible = false;
+            this.programsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.programsDataGridView.Size = new System.Drawing.Size(806, 529);
+            this.programsDataGridView.TabIndex = 0;
+            this.programsDataGridView.CellToolTipTextNeeded += new System.Windows.Forms.DataGridViewCellToolTipTextNeededEventHandler(this.programsDataGridView_CellToolTipTextNeeded);
             // 
-            // channelDataGridViewTextBoxColumn
+            // Selected
             // 
-            this.channelDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            this.channelDataGridViewTextBoxColumn.DataPropertyName = "Channel";
-            this.channelDataGridViewTextBoxColumn.HeaderText = "Channel";
-            this.channelDataGridViewTextBoxColumn.MinimumWidth = 100;
-            this.channelDataGridViewTextBoxColumn.Name = "channelDataGridViewTextBoxColumn";
-            this.channelDataGridViewTextBoxColumn.ReadOnly = true;
+            this.Selected.DataPropertyName = "Selected";
+            this.Selected.HeaderText = "";
+            this.Selected.MinimumWidth = 25;
+            this.Selected.Name = "Selected";
+            this.Selected.ReadOnly = true;
+            this.Selected.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Selected.Width = 40;
             // 
-            // episodeNumDataGridViewTextBoxColumn
+            // iDDataGridViewTextBoxColumn
             // 
-            this.episodeNumDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            this.episodeNumDataGridViewTextBoxColumn.DataPropertyName = "EpisodeNum";
-            this.episodeNumDataGridViewTextBoxColumn.HeaderText = "E#";
-            this.episodeNumDataGridViewTextBoxColumn.MinimumWidth = 30;
-            this.episodeNumDataGridViewTextBoxColumn.Name = "episodeNumDataGridViewTextBoxColumn";
-            this.episodeNumDataGridViewTextBoxColumn.ReadOnly = true;
-            this.episodeNumDataGridViewTextBoxColumn.Width = 30;
+            this.iDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.iDDataGridViewTextBoxColumn.MinimumWidth = 30;
+            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.iDDataGridViewTextBoxColumn.Width = 56;
             // 
-            // seriesNumDataGridViewTextBoxColumn
+            // nameDataGridViewTextBoxColumn
             // 
-            this.seriesNumDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            this.seriesNumDataGridViewTextBoxColumn.DataPropertyName = "SeriesNum";
-            this.seriesNumDataGridViewTextBoxColumn.HeaderText = "S#";
-            this.seriesNumDataGridViewTextBoxColumn.MinimumWidth = 30;
-            this.seriesNumDataGridViewTextBoxColumn.Name = "seriesNumDataGridViewTextBoxColumn";
-            this.seriesNumDataGridViewTextBoxColumn.ReadOnly = true;
-            this.seriesNumDataGridViewTextBoxColumn.Width = 30;
+            this.nameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Show Title";
+            this.nameDataGridViewTextBoxColumn.MinimumWidth = 250;
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nameDataGridViewTextBoxColumn.Width = 250;
             // 
             // episodeDataGridViewTextBoxColumn
             // 
@@ -215,46 +242,34 @@
             this.episodeDataGridViewTextBoxColumn.ReadOnly = true;
             this.episodeDataGridViewTextBoxColumn.Width = 200;
             // 
-            // nameDataGridViewTextBoxColumn
+            // seriesNumDataGridViewTextBoxColumn
             // 
-            this.nameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Show Title";
-            this.nameDataGridViewTextBoxColumn.MinimumWidth = 250;
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nameDataGridViewTextBoxColumn.Width = 250;
+            this.seriesNumDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            this.seriesNumDataGridViewTextBoxColumn.DataPropertyName = "SeriesNum";
+            this.seriesNumDataGridViewTextBoxColumn.HeaderText = "S#";
+            this.seriesNumDataGridViewTextBoxColumn.MinimumWidth = 30;
+            this.seriesNumDataGridViewTextBoxColumn.Name = "seriesNumDataGridViewTextBoxColumn";
+            this.seriesNumDataGridViewTextBoxColumn.ReadOnly = true;
+            this.seriesNumDataGridViewTextBoxColumn.Width = 30;
             // 
-            // iDDataGridViewTextBoxColumn
+            // episodeNumDataGridViewTextBoxColumn
             // 
-            this.iDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.iDDataGridViewTextBoxColumn.MinimumWidth = 30;
-            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.iDDataGridViewTextBoxColumn.Width = 56;
+            this.episodeNumDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            this.episodeNumDataGridViewTextBoxColumn.DataPropertyName = "EpisodeNum";
+            this.episodeNumDataGridViewTextBoxColumn.HeaderText = "E#";
+            this.episodeNumDataGridViewTextBoxColumn.MinimumWidth = 30;
+            this.episodeNumDataGridViewTextBoxColumn.Name = "episodeNumDataGridViewTextBoxColumn";
+            this.episodeNumDataGridViewTextBoxColumn.ReadOnly = true;
+            this.episodeNumDataGridViewTextBoxColumn.Width = 30;
             // 
-            // Selected
+            // channelDataGridViewTextBoxColumn
             // 
-            this.Selected.DataPropertyName = "Selected";
-            this.Selected.HeaderText = "";
-            this.Selected.MinimumWidth = 25;
-            this.Selected.Name = "Selected";
-            this.Selected.ReadOnly = true;
-            this.Selected.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Selected.Width = 40;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            label1.Location = new System.Drawing.Point(11, 9);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(392, 37);
-            label1.TabIndex = 3;
-            label1.Text = "iPlayer Personal Video Recorder";
+            this.channelDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            this.channelDataGridViewTextBoxColumn.DataPropertyName = "Channel";
+            this.channelDataGridViewTextBoxColumn.HeaderText = "Channel";
+            this.channelDataGridViewTextBoxColumn.MinimumWidth = 100;
+            this.channelDataGridViewTextBoxColumn.Name = "channelDataGridViewTextBoxColumn";
+            this.channelDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // recordButton
             // 
@@ -361,28 +376,6 @@
             this.WaitStateMarquee.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.WaitStateMarquee.TabIndex = 7;
             // 
-            // LoadingLabel
-            // 
-            LoadingLabel.AutoSize = true;
-            LoadingLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            LoadingLabel.ForeColor = System.Drawing.Color.Green;
-            LoadingLabel.Location = new System.Drawing.Point(8, 18);
-            LoadingLabel.Name = "LoadingLabel";
-            LoadingLabel.Size = new System.Drawing.Size(345, 32);
-            LoadingLabel.TabIndex = 8;
-            LoadingLabel.Text = "Updating Programme Listings...";
-            // 
-            // label2
-            // 
-            label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            label2.AutoSize = true;
-            label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label2.Location = new System.Drawing.Point(197, 619);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(178, 25);
-            label2.TabIndex = 9;
-            label2.Text = "Programmes found:";
-            // 
             // FilteredItemCount
             // 
             this.FilteredItemCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -409,6 +402,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.refreshCacheLinkLabel);
+            this.panel1.Controls.Add(this.cacheAgeLabel);
             this.panel1.Controls.Add(this.settingsLinkLabel);
             this.panel1.Controls.Add(this.FilteredItemCount);
             this.panel1.Controls.Add(label2);
@@ -416,11 +411,45 @@
             this.panel1.Controls.Add(this.FilterList);
             this.panel1.Controls.Add(this.recordButton);
             this.panel1.Controls.Add(label1);
-            this.panel1.Controls.Add(this.ProgramsGridView);
+            this.panel1.Controls.Add(this.programsDataGridView);
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1030, 663);
             this.panel1.TabIndex = 14;
+            // 
+            // cacheAgeLabel
+            // 
+            this.cacheAgeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cacheAgeLabel.Location = new System.Drawing.Point(622, 9);
+            this.cacheAgeLabel.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.cacheAgeLabel.Name = "cacheAgeLabel";
+            this.cacheAgeLabel.Size = new System.Drawing.Size(382, 25);
+            this.cacheAgeLabel.TabIndex = 16;
+            this.cacheAgeLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // refreshCacheLinkLabel
+            // 
+            this.refreshCacheLinkLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.refreshCacheLinkLabel.LinkColor = System.Drawing.SystemColors.MenuHighlight;
+            this.refreshCacheLinkLabel.Location = new System.Drawing.Point(842, 34);
+            this.refreshCacheLinkLabel.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.refreshCacheLinkLabel.Name = "refreshCacheLinkLabel";
+            this.refreshCacheLinkLabel.Size = new System.Drawing.Size(162, 29);
+            this.refreshCacheLinkLabel.TabIndex = 15;
+            this.refreshCacheLinkLabel.TabStop = true;
+            this.refreshCacheLinkLabel.Text = "Refresh program cache";
+            this.refreshCacheLinkLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.refreshCacheLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.refreshCacheLinkLabel_LinkClicked);
+            // 
+            // settingsDialogControl
+            // 
+            this.settingsDialogControl.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.settingsDialogControl.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.settingsDialogControl.Location = new System.Drawing.Point(157, 115);
+            this.settingsDialogControl.Name = "settingsDialogControl";
+            this.settingsDialogControl.Size = new System.Drawing.Size(1065, 942);
+            this.settingsDialogControl.TabIndex = 12;
+            this.settingsDialogControl.Visible = false;
             // 
             // iPlayerForm
             // 
@@ -428,15 +457,16 @@
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1052, 674);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.optionsDialogControl1);
+            this.Controls.Add(this.settingsDialogControl);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "iPlayerForm";
             this.Text = "iPlayer Personal Video Recorder";
             this.Load += new System.EventHandler(this.iPlayerForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.programsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.programSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProgramsGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.programsDataGridView)).EndInit();
             this.WaitState.ResumeLayout(false);
             this.WaitState.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -449,7 +479,7 @@
         private System.Windows.Forms.BindingSource programsBindingSource;
         private ProgramSet programSet;
         private System.Diagnostics.Process backgroundProcess;
-        private OptionsDialogControl optionsDialogControl1;
+        private OptionsDialogControl settingsDialogControl;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.LinkLabel settingsLinkLabel;
         private System.Windows.Forms.Label FilteredItemCount;
@@ -457,7 +487,7 @@
         private System.Windows.Forms.ProgressBar WaitStateMarquee;
         private System.Windows.Forms.TreeView FilterList;
         private System.Windows.Forms.Button recordButton;
-        private System.Windows.Forms.DataGridView ProgramsGridView;
+        private System.Windows.Forms.DataGridView programsDataGridView;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Selected;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
@@ -465,6 +495,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn seriesNumDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn episodeNumDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn channelDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label cacheAgeLabel;
+        private System.Windows.Forms.LinkLabel refreshCacheLinkLabel;
     }
 }
 
