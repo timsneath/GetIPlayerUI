@@ -17,16 +17,7 @@ namespace GetIPlayerUI
         // Specific command that we call. In the future might change this to call the Perl script directly.
         private const string APP_NAME = "get_iplayer.cmd";
 
-        /// <summary>
-        /// This method is a low-level wrapper around the get_iplayer command line interface. It creates
-        /// an instance of the shell, passes the supplied parameters to get_iplayer and returns the result.
-        /// <param name="parameters">Commands that should be supplied to get_iplayer. For example "--get 250" 
-        /// would be passed here to download the TV / radio programme with ID 250.</param>
-        /// <param name="useProxy">Use a proxy server if supplied. In general, this should be true where 
-        /// program content is being downloaded, but can be false when the call is a request for metadata.</param>
-        /// <param name="showWindow">Determines whether the command line window is hidden or shown to the user.</param>
-        /// <returns>A string containing the output of get_iplayer.</returns>
-        public string CallIPlayer(string parameters, bool useProxy = true, bool showWindow = true)
+        private string CallIPlayer(string parameters, bool useProxy = true, bool showWindow = true)
         {
             string proxy = "--proxy http://" + Properties.Settings.Default.ProxyUsername +
                 ":" + Properties.Settings.Default.ProxyPassword + 
@@ -64,6 +55,15 @@ namespace GetIPlayerUI
             }
         }
 
+        /// <summary>
+        /// This method is a low-level wrapper around the get_iplayer command line interface. It creates
+        /// an instance of the shell, passes the supplied parameters to get_iplayer and returns the result.
+        /// <param name="parameters">Commands that should be supplied to get_iplayer. For example "--get 250" 
+        /// would be passed here to download the TV / radio programme with ID 250.</param>
+        /// <param name="useProxy">Use a proxy server if supplied. In general, this should be true where 
+        /// program content is being downloaded, but can be false when the call is a request for metadata.</param>
+        /// <param name="showWindow">Determines whether the command line window is hidden or shown to the user.</param>
+        /// <returns>A string containing the output of get_iplayer.</returns>
         public async Task<string> CallIPlayerAsync(string parameters, bool useProxy = true, bool showWindow = true)
         {
             var output = await Task<string>.Run(() =>
@@ -84,12 +84,12 @@ namespace GetIPlayerUI
         ///     --search Weather: returns all programmes that match the keyword "weather"
         ///     --type radio: returns all radio programmes
         /// <returns>A ProgramSet dataset</returns>
-        public ProgramSet ProgramsAvailable(string filter = "")
+        public async Task<ProgramSet> ProgramsAvailableAsync(string filter = "")
         {
             var ps = new ProgramSet();
             string callParams = "--listformat \"<index>,<name>,<episode>,<seriesnum>,<episodenum>,<channel>,<type>,<duration>,<desc>\" " + filter;
 
-            string progs = this.CallIPlayer(callParams, false, false);
+            string progs = await this.CallIPlayerAsync(callParams, false, false);
             var reader = new StringReader(progs);
 
             // ignore header
@@ -122,14 +122,14 @@ namespace GetIPlayerUI
         /// Records the programs specified by ID to the default directory.
         /// </summary>
         /// <param name="programIDs">An array of integers representing individual programmes.</param>
-        public void RecordPrograms(int[] programIDs)
+        public async Task RecordProgramsAsync(int[] programIDs)
         {
             string progs = "";
             foreach(var progID in programIDs)
             {
                 progs += progID.ToString() + " ";
             }
-            this.CallIPlayer("--get " + progs + " --modes=best", true, true);
+            await CallIPlayerAsync("--get " + progs + " --modes=best", true, true);
         }
 
         /// <summary>
@@ -147,11 +147,11 @@ namespace GetIPlayerUI
         /// <param name="progId">An integer representing the program ID for which metadata is to be retrieved.</param>
         /// <returns>Returns a dictionary of key, value pairs representing the various metadata attributes
         /// associated with a specific program ID.</returns>
-        public Dictionary<string, string> GetProgramInfo(int progId)
+        public async Task<Dictionary<string, string>> GetProgramInfoAsync(int progId)
         {
             Dictionary<string, string> programInfo = new Dictionary<string, string>();
 
-            string progInfoRaw = this.CallIPlayer("get_iplayer.cmd --info " + progId, false, false);
+            string progInfoRaw = await CallIPlayerAsync("get_iplayer.cmd --info " + progId, false, false);
 
             StringReader reader = new StringReader(progInfoRaw);
 
@@ -186,9 +186,9 @@ namespace GetIPlayerUI
         /// <param name="type">Type of media, e.g. "tv", "radio", "livetv"</param>
         /// <returns>An English string containing the length of time spanned since cache was 
         /// refreshed, or an empty string if the cache has not yet been created.</returns>
-        public string GetCacheAge(string type="tv")
+        public async Task<string> GetCacheAgeAsync(string type="tv")
         {
-            string output = CallIPlayer("--show-cache-age --type " + type, false, false);
+            string output = await CallIPlayerAsync("--show-cache-age --type " + type, false, false);
 
             StringReader reader = new StringReader(output);
 

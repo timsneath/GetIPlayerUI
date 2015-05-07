@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -26,10 +23,11 @@ namespace GetIPlayerUI
             Application.UseWaitCursor = true;
             WaitState.Visible = true;
 
-            ps = await Task<ProgramSet>.Run(() =>
-            {
-                return iPlayer.ProgramsAvailable(filter);
-            });
+            ps = await iPlayer.ProgramsAvailableAsync(filter);
+            //ps = await Task<ProgramSet>.Run(() =>
+            //{
+            //    return iPlayer.ProgramsAvailable(filter);
+            //});
 
             programsDataGridView.DataSource = ps;
             programsDataGridView.DataMember = "Programs";
@@ -39,7 +37,7 @@ namespace GetIPlayerUI
             Application.UseWaitCursor = false;
         }
 
-        private void RecordPrograms() 
+        private async void RecordPrograms() 
         {
             List<int> ids = new List<int>();
 
@@ -50,7 +48,7 @@ namespace GetIPlayerUI
                     ids.Add(Int32.Parse((string)r.Cells[1].Value));
                 }
             }
-            iPlayer.RecordPrograms(ids.ToArray<int>());
+            await iPlayer.RecordProgramsAsync(ids.ToArray<int>());
         }
 
         private void RecordProgramsButtonClicked(object sender, EventArgs e)
@@ -90,7 +88,7 @@ namespace GetIPlayerUI
             }
         }
 
-        private void UpdateCacheLabel()
+        private async void UpdateCacheLabel()
         {
             string cacheType;
             // TODO: Assumes tree view has only two levels. May need to revisit this. 
@@ -103,7 +101,7 @@ namespace GetIPlayerUI
                 cacheType = FilterList.SelectedNode.Parent.Name;
             }
 
-            var age = iPlayer.GetCacheAge(cacheType);
+            var age = await iPlayer.GetCacheAgeAsync(cacheType);
             if (age == String.Empty)
             {
                 age = "Programs cache has not yet been created.";
